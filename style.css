@@ -383,7 +383,7 @@ body {
 .img-placeholder {
   width: 100%;
   aspect-ratio: 16/9;
-  border-radius: 12px;
+  border-radius: 16px;
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(227, 25, 55, 0.05));
   border: 1px dashed var(--tesla-border);
   display: flex;
@@ -394,11 +394,28 @@ body {
   overflow: hidden;
 }
 
+/* When an image is present, remove the placeholder styling */
+.img-placeholder:has(img) {
+  border: 1px solid var(--tesla-border);
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.img-placeholder:has(img):hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 8px 40px rgba(59, 130, 246, 0.1);
+}
+
 .img-placeholder img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 15px;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.img-placeholder:hover img {
+  transform: scale(1.03);
 }
 
 /* ===== Separator ===== */
